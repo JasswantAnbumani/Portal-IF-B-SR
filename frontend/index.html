@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IF B SR - Portal Kelas</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">IF</div>
+      <div class="brand-text">
+        <h1>IF B SR</h1>
+        <span>Portal Kelas</span>
+      </div>
+    </div>
+    <nav class="top-nav" aria-label="Navigasi utama">
+      <button class="nav-link active" data-route="home">Home</button>
+      <button class="nav-link" data-route="schedule">Jadwal</button>
+      <button class="nav-link" data-route="shop">Toko</button>
+      <button class="nav-link" data-route="about">About Us</button>
+      <button class="nav-link admin" data-route="admin">Admin</button>
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- Home -->
+    <section id="page-home" class="page visible" aria-labelledby="home-title">
+      <div class="hero">
+        <div>
+          <h2 id="home-title">Selamat Datang, IF B SR!</h2>
+          <p>Portal kelas untuk pengumuman, jadwal, toko kelas, dan lainnya.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tablist" role="tablist" aria-label="Home Tabs">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="pengumuman">Pengumuman</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="petugas-doa">Petugas Doa</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="jadwal-hari-ini">Jadwal Hari Ini</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="quote">Kata-kata Hari Ini</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="feedback">Feedback Anonim</button>
+        </div>
+
+        <div class="tabpanel visible" role="tabpanel" data-tabpanel="pengumuman">
+          <h3>Pengumuman Terbaru</h3>
+          <ul id="home-announcements" class="list"></ul>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" data-tabpanel="petugas-doa">
+          <h3>Petugas Doa Minggu Ini</h3>
+          <div id="home-prayers" class="grid grid-2"></div>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" data-tabpanel="jadwal-hari-ini">
+          <h3>Jadwal Kuliah Hari Ini</h3>
+          <ul id="home-today-schedule" class="list"></ul>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" data-tabpanel="quote">
+          <h3>Kata-kata Hari Ini</h3>
+          <blockquote id="home-quote" class="quote"></blockquote>
+        </div>
+
+        <div class="tabpanel" role="tabpanel" data-tabpanel="feedback">
+          <h3>Kirim Feedback Anonim</h3>
+          <form id="feedback-form" class="form">
+            <textarea id="feedback-message" rows="4" placeholder="Tulis saran atau masukan secara anonim..."></textarea>
+            <div class="form-row">
+              <button type="submit" class="btn primary">Kirim</button>
+              <span id="feedback-status" class="status"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jadwal -->
+    <section id="page-schedule" class="page" aria-labelledby="schedule-title">
+      <h2 id="schedule-title">Jadwal Kuliah</h2>
+      <div class="schedule-controls">
+        <div class="day-tabs">
+          <button class="day-tab active" data-day="Senin">Senin</button>
+          <button class="day-tab" data-day="Selasa">Selasa</button>
+          <button class="day-tab" data-day="Rabu">Rabu</button>
+          <button class="day-tab" data-day="Kamis">Kamis</button>
+          <button class="day-tab" data-day="Jumat">Jumat</button>
+          <button class="day-tab" data-day="Sabtu">Sabtu</button>
+        </div>
+        <input id="schedule-search" class="input" placeholder="Cari mata kuliah, dosen, atau ruang..." />
+      </div>
+      <ul id="schedule-list" class="list large"></ul>
+    </section>
+
+    <!-- Toko -->
+    <section id="page-shop" class="page" aria-labelledby="shop-title">
+      <div class="title-row">
+        <h2 id="shop-title">Toko IF B SR</h2>
+        <div class="muted">Klik kartu untuk melihat detail & harga</div>
+      </div>
+      <div id="shop-grid" class="grid grid-3"></div>
+    </section>
+
+    <!-- About -->
+    <section id="page-about" class="page" aria-labelledby="about-title">
+      <h2 id="about-title">Tentang IF B SR</h2>
+      <p>
+        IF B SR adalah portal kelas untuk mengelola informasi penting seperti pengumuman,
+        jadwal kuliah, toko kelas, dan feedback anonim. Dibangun dengan front-end murni
+        (HTML, CSS, JS) dan data tersimpan di database lokal.
+      </p>
+      <ul>
+        <li>Home: Pengumuman, Petugas Doa, Jadwal Hari Ini, Kata-kata, Feedback</li>
+        <li>Jadwal: Lihat jadwal per-hari, filter, dan cari</li>
+        <li>Toko: Katalog produk kelas dengan harga</li>
+        <li>Admin: Login untuk kelola konten</li>
+      </ul>
+      <p class="muted">Website Ini Masih Dalam Tahap Pengembangan🙏</p>
+    </section>
+
+    <!-- Admin -->
+    <section id="page-admin" class="page" aria-labelledby="admin-title">
+      <h2 id="admin-title">Admin Dashboard</h2>
+
+      <div id="admin-logged-out">
+        <form id="admin-login-form" class="form card">
+          <h3>Login Admin</h3>
+          <div class="form-row">
+            <label for="admin-username">Username</label>
+            <input id="admin-username" class="input" placeholder="admin" autocomplete="username"/>
+          </div>
+          <div class="form-row">
+            <label for="admin-password">Password</label>
+            <input id="admin-password" type="password" class="input" placeholder="ifbsr123" autocomplete="current-password"/>
+          </div>
+          <div class="form-row">
+            <button type="submit" class="btn primary">Login</button>
+            <span id="admin-login-status" class="status"></span>
+          </div>
+          <div class="muted small">Demo: admin / ifbsr123 (hardcoded)</div>
+        </form>
+      </div>
+
+      <div id="admin-logged-in" class="hidden">
+        <div class="admin-toolbar">
+          <button id="btn-logout" class="btn">Logout</button>
+          <span class="muted">Masuk sebagai <strong>admin</strong></span>
+        </div>
+
+        <div class="admin-panels">
+          <div class="panel">
+            <h3>Kelola Pengumuman</h3>
+            <form id="form-announcement" class="form inline">
+              <input id="input-announcement" class="input" placeholder="Tulis pengumuman baru..." />
+              <button class="btn primary" type="submit">Tambah</button>
+            </form>
+            <ul id="admin-announcement-list" class="list"></ul>
+          </div>
+
+          <div class="panel">
+            <h3>Kelola Petugas Doa</h3>
+            <form id="form-prayers" class="form grid grid-2">
+              <div class="form-row">
+                <label>Senin</label><input data-day="Senin" class="input prayer-input" placeholder="Nama petugas"/>
+              </div>
+              <div class="form-row">
+                <label>Selasa</label><input data-day="Selasa" class="input prayer-input" placeholder="Nama petugas"/>
+              </div>
+              <div class="form-row">
+                <label>Rabu</label><input data-day="Rabu" class="input prayer-input" placeholder="Nama petugas"/>
+              </div>
+              <div class="form-row">
+                <label>Kamis</label><input data-day="Kamis" class="input prayer-input" placeholder="Nama petugas"/>
+              </div>
+              <div class="form-row">
+                <label>Jumat</label><input data-day="Jumat" class="input prayer-input" placeholder="Nama petugas"/>
+              </div>
+              <div class="form-row">
+                <label>Sabtu</label><input data-day="Sabtu" class="input prayer-input" placeholder="Nama petugas"/>
+              </div>
+              <div class="form-row full">
+                <button class="btn primary" type="submit">Simpan Petugas</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Kelola Jadwal</h3>
+            <form id="form-schedule" class="form grid grid-4">
+              <div class="form-row">
+                <label>Hari</label>
+                <select id="sched-day" class="input">
+                  <option>Senin</option><option>Selasa</option><option>Rabu</option>
+                  <option>Kamis</option><option>Jumat</option><option>Sabtu</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label>Mata Kuliah</label><input id="sched-course" class="input" placeholder="Nama MK"/>
+              </div>
+              <div class="form-row">
+                <label>Waktu</label><input id="sched-time" class="input" placeholder="08:00-10:00"/>
+              </div>
+              <div class="form-row">
+                <label>Ruang</label><input id="sched-room" class="input" placeholder="Ruang A-101"/>
+              </div>
+              <div class="form-row">
+                <label>Dosen</label><input id="sched-lecturer" class="input" placeholder="Nama Dosen"/>
+              </div>
+              <div class="form-row full">
+                <button class="btn primary" type="button" id="btn-add-schedule">Tambah ke Hari</button>
+              </div>
+            </form>
+            <div class="muted small">Tip: Gunakan halaman Jadwal untuk melihat hasilnya per hari.</div>
+          </div>
+
+          <div class="panel">
+            <h3>Kelola Toko</h3>
+            <form id="form-shop" class="form grid grid-3">
+              <div class="form-row">
+                <label>Nama Barang</label><input id="shop-name" class="input" placeholder="Contoh: Kaos Angkatan"/>
+              </div>
+              <div class="form-row">
+                <label>Harga (Rp)</label><input id="shop-price" type="number" class="input" placeholder="50000"/>
+              </div>
+              <div class="form-row">
+                <label>Gambar URL</label><input id="shop-image" class="input" placeholder="https://..."/>
+              </div>
+              <div class="form-row full">
+                <label>Deskripsi</label><textarea id="shop-desc" rows="3" class="input" placeholder="Detail barang, bahan, ukuran..."></textarea>
+              </div>
+              <div class="form-row full">
+                <button class="btn primary" type="button" id="btn-add-shop">Tambah Produk</button>
+              </div>
+            </form>
+            <ul id="admin-shop-list" class="list"></ul>
+          </div>
+
+          <div class="panel">
+            <h3>Feedback Anonim (Hanya Admin)</h3>
+            <ul id="admin-feedback-list" class="list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="modal-close" class="icon-btn" aria-label="Tutup">✕</button>
+      <div id="modal-body"></div>
+    </div>
+    <div class="modal-backdrop"></div>
+  </div>
+
+  <footer class="app-footer">
+    <div>© <span id="year"></span> IF B SR</div>
+    <div class="muted small">Dibuat untuk kebutuhan kelas. Data tersimpan di browser Anda.</div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

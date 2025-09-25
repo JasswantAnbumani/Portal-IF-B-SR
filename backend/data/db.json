@@ -1,0 +1,34 @@
+{
+  "announcements": [],
+  "prayers": {
+    "Senin": "",
+    "Selasa": "",
+    "Rabu": "",
+    "Kamis": "",
+    "Jumat": "",
+    "Sabtu": ""
+  },
+  "schedule": {
+    "Senin": [
+      {
+        "id": "7f777ce1-9526-4802-a46f-627186a1d127",
+        "course": "Mtk",
+        "time": "03.00 - 12.00",
+        "room": "Z201",
+        "lecturer": "Pak Marko"
+      }
+    ],
+    "Kamis": [
+      {
+        "id": "7628084c-2ed1-48ab-bb16-ccbdf68881fc",
+        "course": "IPA",
+        "time": "08.00 - 21.00",
+        "room": "B-13123",
+        "lecturer": "Pak Gian"
+      }
+    ]
+  },
+  "shop": [],
+  "feedback": [],
+  "quotes": []
+}
